@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* #region ------- Blue Primary */
+    --tw-color-blue-100: 227 231 242;
+    --tw-color-blue-50: 197 205 227;
+    --tw-color-blue-200: 141 157 200;
+    --tw-color-blue-300: 83 107 172;
+    --tw-color-blue-400: 56 73 117;
+    --tw-color-blue-500: 28 36 58;
+    --tw-color-blue-600: 23 30 48;
+    --tw-color-blue-700: 17 21 34;
+    --tw-color-blue-800: 12 15 24;
+    --tw-color-blue-900: 5 6 10;
+    --color-blue-50: rgb(var(--tw-color-blue-50));
+    --color-blue-100: rgb(var(--tw-color-blue-100));
+    --color-blue-200: rgb(var(--tw-color-blue-200));
+    --color-blue-300: rgb(var(--tw-color-blue-300));
+    --color-blue-400: rgb(var(--tw-color-blue-400));
+    --color-blue-500: rgb(var(--tw-color-blue-500));
+    --color-blue-600: rgb(var(--tw-color-blue-600));
+    --color-blue-700: rgb(var(--tw-color-blue-700));
+    --color-blue-800: rgb(var(--tw-color-blue-800));
+    --color-blue-900: rgb(var(--tw-color-blue-900));
+    /* #endregion */
+    /* #region ------- Beige Primary */
+    --tw-color-beige-50: 254 254 251;
+    --tw-color-beige-100: 253 253 247;
+    --tw-color-beige-200: 250 250 239;
+    --tw-color-beige-300: 249 249 235;
+    --tw-color-beige-400: 247 247 227;
+    --tw-color-beige-500: 245 245 220;
+    --tw-color-beige-600: 224 224 148;
+    --tw-color-beige-700: 204 204 76;
+    --tw-color-beige-800: 143 143 41;
+    --tw-color-beige-900: 71 71 20;
+    --color-beige-50: rgb(var(--tw-color-beige-50));
+    --color-beige-100: rgb(var(--tw-color-beige-100));
+    --color-beige-200: rgb(var(--tw-color-beige-200));
+    --color-beige-300: rgb(var(--tw-color-beige-300));
+    --color-beige-400: rgb(var(--tw-color-beige-400));
+    --color-beige-500: rgb(var(--tw-color-beige-500));
+    --color-beige-600: rgb(var(--tw-color-beige-600));
+    --color-beige-700: rgb(var(--tw-color-beige-700));
+    --color-beige-800: rgb(var(--tw-color-beige-800));
+    --color-beige-900: rgb(var(--tw-color-beige-900));
+    /* #endregion */
+}
+
+@layer base {
+    @font-face {
+        font-family: 'Overpass Mono', monospace;
+        font-style: normal;
+        font-weight: 100 200 300 400 500 600 700 800 900;
+        src: url('/public/Fonts/OverpassMono.woff2');
+        unicode-range: U+00-52F, U+1E00-1FFF,
+            U+2200 –22FF U+118A0 –118FF U+118A0 –118FF U+1F600 –1F64F
+                U+1F300 –1F5FF U+1800 –18AF;
+    }
+
+    @font-face {
+        font-family: 'Overpass', sans-serif;
+        font-style: normal italic;
+        font-weight: 100 200 300 400 500 600 700 800 900;
+        src: url('/public/Fonts/Overpass-VariableFont_wght.woff2');
+        unicode-range: U+00-52F, U+1E00-1FFF, U+2200 –22FF;
+    }
+    @font-face {
+        font-family: 'Nunito', sans-serif;
+        font-style: normal italic;
+        font-weight: 100 200 300 400 500 600 700 800 900;
+        src: url('/public/Fonts/Nunito-VariableFont_wght.woff2');
+        unicode-range: U+00-52F, U+1E00-1FFF, U+2200 –22FF;
+    }
+
+    h1 {
+        @apply font-primary font-bold text-2xl md:font-extrabold md:text-4xl;
+    }
+
+    h2 {
+        @apply font-primary font-bold text-xl
+    }
+}
+
+/* components like buttons */
+@layer components {
+    .btn {
+        font-family: theme('fontFamily.mono');
+        font-weight: theme('fontSize.base');
+        background-color: theme('colors.blue.300');
+        border-radius: theme('borderRadius.md');
+        padding: theme('spacing[2]');
+        box-shadow: theme('boxShadow.lg');
+    }
+    
+}

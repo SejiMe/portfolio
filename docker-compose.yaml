@@ -1,0 +1,60 @@
+# A Docker Compose must always start with the version tag.
+# We use '3' because it's the last version.
+version: "3"
+
+# You should know that Docker Compose works with services.
+# 1 service = 1 container.
+# For example, a service, a server, a client, a database...
+# We use the keyword 'services' to start to create services.
+services:
+  # The name of our service is "database"
+  # but you can use the name of your choice.
+  # Note: This may change the commands you are going to use a little bit.
+  postgres:
+    # Official Postgres image from DockerHub (we use the last version)
+    image: "postgres:latest"
+
+    # By default, a Postgres database is running on the 5432 port.
+    # If we want to access the database from our computer (outside the container),
+    # we must share the port with our computer's port.
+    # The syntax is [port we want on our machine]:[port we want to retrieve in the container]
+    # Note: You are free to change your computer's port,
+    # but take into consideration that it will change the way
+    # you are connecting to your database.
+    ports:
+      - "5432:5432"
+    networks:
+      portfolio_net:
+        ipv4_address: 172.13.22.2
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=todoadmin # The PostgreSQL user (useful to connect to the database)
+      - POSTGRES_PASSWORD=cgHRoLKbb5Fksy # The PostgreSQL password (useful to connect to the database)
+      - POSTGRES_DB=todo_db # The PostgreSQL default database (automatically created at first launch)
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "1313:80"
+    networks:
+      portfolio_net:
+        ipv4_address: 172.13.22.3
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=pgadmin.portfolio@test.com
+      - PGADMIN_DEFAULT_PASSWORD=2gpVYga8PE9JVC
+      - PGADMIN_LISTEN_PORT=80
+    volumes:
+      - ./pgadmindata:/var/lib/pgadmin
+
+networks:
+  portfolio_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.13.22.0/24"
+          gateway: 172.13.22.1
+
+volumes:
+  pgdata:
+  pgadmindata:
