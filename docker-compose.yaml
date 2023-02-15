@@ -25,13 +25,13 @@ services:
       - "5432:5432"
     networks:
       portfolio_net:
-        ipv4_address: 172.13.22.2
+        ipv4_address: 172.20.0.2
     volumes:
       - ./pgdata:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=todoadmin # The PostgreSQL user (useful to connect to the database)
-      - POSTGRES_PASSWORD=cgHRoLKbb5Fksy # The PostgreSQL password (useful to connect to the database)
-      - POSTGRES_DB=todo_db # The PostgreSQL default database (automatically created at first launch)
+      - POSTGRES_USER=portfolioadmin # The PostgreSQL user (useful to connect to the database)
+      - POSTGRES_PASSWORD=uCqqWEQzK3AbC4 # The PostgreSQL password (useful to connect to the database)
+      - POSTGRES_DB=portfolio_db # The PostgreSQL default database (automatically created at first launch)
 
   pgadmin:
     image: dpage/pgadmin4
@@ -39,7 +39,7 @@ services:
       - "1313:80"
     networks:
       portfolio_net:
-        ipv4_address: 172.13.22.3
+        ipv4_address: 172.20.0.3
     environment:
       - PGADMIN_DEFAULT_EMAIL=pgadmin.portfolio@test.com
       - PGADMIN_DEFAULT_PASSWORD=2gpVYga8PE9JVC
@@ -52,8 +52,8 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: "172.13.22.0/24"
-          gateway: 172.13.22.1
+        - subnet: "172.20.0.0/24"
+          gateway: 172.20.0.1
 
 volumes:
   pgdata:
