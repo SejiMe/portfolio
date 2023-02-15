@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
+    provider = "postgresql"
     // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
     // Further reading:
     // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
@@ -23,16 +23,16 @@ model Example {
 // Necessary for Next auth
 model Account {
     id                String  @id @default(cuid())
-    userId            String
-    type              String
-    provider          String
-    providerAccountId String
-    refresh_token     String? // @db.Text
-    access_token      String? // @db.Text
+    userId            String  @db.Text
+    type              String  @db.Text
+    provider          String  @db.Text
+    providerAccountId String  @db.Text
+    refresh_token     String? @db.Text
+    access_token      String? @db.Text
     expires_at        Int?
     token_type        String?
     scope             String?
-    id_token          String? // @db.Text
+    id_token          String? @db.Text
     session_state     String?
     user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -53,8 +53,11 @@ model User {
     email         String?   @unique
     emailVerified DateTime?
     image         String?
+    isAdmin       Boolean   @default(false) @db.Boolean
     accounts      Account[]
     sessions      Session[]
+    Todo          Todo[]
+    Post          Post[]
 }
 
 model VerificationToken {
@@ -63,4 +66,64 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model Todo {
+    id         Int                @id @default(autoincrement())
+    title      String             @db.Text
+    date       DateTime           @db.Date
+    author     User               @relation(fields: [authorID], references: [id])
+    authorID   String
+    categories CategoriesOnTodo[]
+    task       Task[]
+}
+
+model Task {
+    id          Int     @id @default(autoincrement())
+    title       String  @db.Text
+    description String? @db.Text
+    Todo        Todo    @relation(fields: [todoId], references: [id])
+    todoId      Int
+}
+
+model Post {
+    id         String             @id @default(cuid())
+    title      String             @db.VarChar(75)
+    context    String             @db.Text
+    author     User               @relation(fields: [userId], references: [id])
+    categories CategoriesOnPost[]
+    comment    Comment[]
+    userId     String
+}
+
+model Comment {
+    id      String @id @default(cuid())
+    message String @db.Text
+    Post    Post?  @relation(fields: [postId], references: [id])
+    postId  String
+}
+
+model Categories {
+    id    Int                @id @default(autoincrement())
+    name  String             @db.Text
+    todos CategoriesOnTodo[]
+    posts CategoriesOnPost[]
+}
+
+model CategoriesOnTodo {
+    Todo         Todo       @relation(fields: [todoId], references: [id])
+    todoId       Int
+    Categories   Categories @relation(fields: [categoriesId], references: [id])
+    categoriesId Int
+
+    @@id([todoId, categoriesId])
+}
+
+model CategoriesOnPost {
+    Categories   Categories? @relation(fields: [categoriesId], references: [id])
+    categoriesId Int
+    Post         Post?       @relation(fields: [postId], references: [id])
+    postId       String
+
+    @@id([postId, categoriesId])
 }
