@@ -12,6 +12,10 @@
 /prisma/db.sqlite
 /prisma/db.sqlite-journal
 
+#pgdata
+/pgdata
+/pgadmindata
+
 # next.js
 /.next/
 /out/
