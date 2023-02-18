@@ -51,48 +51,56 @@
 
 @layer base {
     @font-face {
-        font-family: 'Overpass Mono', monospace;
+        font-family: "Overpass Mono", monospace;
         font-style: normal;
         font-weight: 100 200 300 400 500 600 700 800 900;
-        src: url('/public/Fonts/OverpassMono.woff2');
+        src: url("/public/Fonts/OverpassMono.woff2");
         unicode-range: U+00-52F, U+1E00-1FFF,
             U+2200 –22FF U+118A0 –118FF U+118A0 –118FF U+1F600 –1F64F
                 U+1F300 –1F5FF U+1800 –18AF;
     }
 
     @font-face {
-        font-family: 'Overpass', sans-serif;
+        font-family: "Overpass", sans-serif;
         font-style: normal italic;
         font-weight: 100 200 300 400 500 600 700 800 900;
-        src: url('/public/Fonts/Overpass-VariableFont_wght.woff2');
+        src: url("/public/Fonts/Overpass-VariableFont_wght.woff2");
         unicode-range: U+00-52F, U+1E00-1FFF, U+2200 –22FF;
     }
     @font-face {
-        font-family: 'Nunito', sans-serif;
+        font-family: "Nunito", sans-serif;
         font-style: normal italic;
         font-weight: 100 200 300 400 500 600 700 800 900;
-        src: url('/public/Fonts/Nunito-VariableFont_wght.woff2');
+        src: url("/public/Fonts/Nunito-VariableFont_wght.woff2");
         unicode-range: U+00-52F, U+1E00-1FFF, U+2200 –22FF;
     }
 
     h1 {
-        @apply font-primary font-bold text-2xl md:font-extrabold md:text-4xl;
+        @apply font-primary text-2xl font-bold md:text-4xl md:font-extrabold;
     }
 
     h2 {
-        @apply font-primary font-bold text-xl
+        @apply font-primary text-xl font-bold;
     }
 }
 
 /* components like buttons */
 @layer components {
     .btn {
-        font-family: theme('fontFamily.mono');
-        font-weight: theme('fontSize.base');
-        background-color: theme('colors.blue.300');
-        border-radius: theme('borderRadius.md');
-        padding: theme('spacing[2]');
-        box-shadow: theme('boxShadow.lg');
+        font-family: theme("fontFamily.mono");
+        font-weight: theme("fontSize.base");
+        background-color: theme("colors.blue.300");
+        border-radius: theme("borderRadius.md");
+        padding: theme("spacing[2]");
+        box-shadow: theme("boxShadow.lg");
+    }
+    .animate {
+    }
+}
+
+@layer utilities {
+    .glow-text {
+        box-shadow: aqua;
     }
     
 }
