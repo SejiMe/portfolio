@@ -47,13 +47,13 @@ module.exports = {
                 // #endregion
             },
             animation: {
-              'wiggle': 'wiggle 0.3s ease-in-out 3'
+                wiggle: "wiggle 0.3s ease-in-out 3",
             },
             keyframes: {
-              wiggle: {
-                '0%, 100%': { transform: 'rotate(-1.5deg)' },
-                '50%': { transform: 'rotate(1deg)' },
-              },
+                wiggle: {
+                    "0%, 100%": { transform: "rotate(-1.5deg)" },
+                    "50%": { transform: "rotate(1deg)" },
+                },
             },
         },
     },
@@ -72,5 +72,6 @@ module.exports = {
                 },
             },
         }),
+        require("tailwindcss-animated"),
     ],
 };
