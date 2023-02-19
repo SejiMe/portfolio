@@ -15,8 +15,10 @@
 #pgdata
 /pgdata
 /pgadmindata
-pgdata/
-pgadmindata/
+/pgdata/
+/pgadmindata/
+/pgadmindata/sessions
+
 
 # next.js
 /.next/
@@ -46,3 +48,9 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+pgadmindata/sessions/da53cc8b-9411-4a4e-929e-7cf1dbd384b8
+pgadmindata/sessions/9862688c-3959-4241-b47e-0bc5aa43c409
+pgadmindata/pgadmin4.db
+
+# .vscode settings 
+.vscode/
