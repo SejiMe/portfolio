@@ -3,7 +3,7 @@ export const info = {
   brief_description:
     "I'm a Full Stack Developer that lean more on Backend Development, or you can call me Seji.",
   role: "Full Stack Developer / Software Developer",
-  picture: "/pic.png",
+  picture: "/bot-c.png",
   picture_alt: "Family",
   location: "Tarlac, Philippines",
   cv: "/resume.pdf",
@@ -37,13 +37,6 @@ export const info = {
         location: "Central Luzon Doctors' Hospital, Tarlac City, Philippines",
         description:
           "Crafted interactive web experiences using React and Redux. Often multitasked between coding and avoiding Principal Skinner.",
-      },
-      {
-        title: "Backend Bandit",
-        date: "2013 - 2015",
-        location: "Comic Book Guy's Software Emporium",
-        description:
-          "Masterminded backend solutions using Node.js and MongoDB. Surprisingly good at debugging, considering my history of causing bugs.",
       },
     ],
 
@@ -84,9 +77,9 @@ export const info = {
   ],
 
   contact: {
-    email: "bart@thesimpsons.com",
-    linkedin: "https://www.linkedin.com/in/bartsimpsonfake",
-    github: "https://www.github.com/gio-del",
-    twitter: "https://www.twitter.com/bartsimpsonfake",
+    email: "jivanatienza@gmail.com",
+    linkedin: "https://www.linkedin.com/in/sejime/",
+    github: "https://github.com/SejiMe",
+    reddit: "https://www.reddit.com/user/jaeger1301/",
   },
 };
