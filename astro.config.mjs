@@ -13,6 +13,6 @@ export default defineConfig({
     rehypePlugins: [rehypeAccessibleEmojis],
   },
   site: LIVE_URL,
-  base: "/portfolio",
+  base: "portfolio",
   integrations: [tailwind(), react(), robotsTxt(), sitemap()]
 });
