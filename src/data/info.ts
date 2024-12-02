@@ -3,10 +3,10 @@ export const info = {
   brief_description:
     "I'm a Full Stack Developer that lean more on Backend Development, or you can call me Seji.",
   role: "Full Stack Developer / Software Developer",
-  picture: "/bot-c.png",
-  picture_alt: "Family",
+  picture: "/portfolio/bot-c.png",
+  picture_alt: "My Bot",
   location: "Tarlac, Philippines",
-  cv: "/resume.pdf",
+  cv: "/portfolio/resume.pdf",
 
   about: {
     description: `I'm a full stack developer with a passion for causing a little chaos in desktop, web and backend development.
