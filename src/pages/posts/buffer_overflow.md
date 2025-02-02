@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Buffer Overflow"
 date: "2024-01-15"
 
@@ -54,4 +54,4 @@ To understand more about buffer overflows, you can check out the following resou
 - [Buffer Overflow Exploitation](https://owasp.org/www-community/attacks/Buffer_Overflow)
 - [Buffer Overflow Prevention](https://www.owasp.org/index.php/Buffer_Overflow)
 
-[^1]: Probably yes, if you are reading this post.
+[^1]: Probably yes, if you are reading this post. -->

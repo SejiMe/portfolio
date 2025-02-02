@@ -17,4 +17,3 @@ I'm a .NET guy but I wanted to add more arsenals on my backend programming, Pyth
 
 Yes! you heard it right, I find myself that I learn fast by immediately applying what I've watched in crash course, or read some documentations, crazy! So I had decided to Automate some work in my current job. I love how this is going.
 
-### Problems
