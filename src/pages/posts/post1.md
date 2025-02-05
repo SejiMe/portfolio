@@ -1,11 +1,11 @@
----
+<!-- ---
 title: "My First Astro Post"
 date: "2022-01-01"
 
 layout: ../../layouts/PostLayout.astro
 description: "This is my first Astro post. Stay tuned for more exciting content coming soon!"
 
-img_path : "/paper.png"
+img_path : "/portfolio/paper.png"
 img_alt: "Insert image description here"
 ---
 
@@ -32,4 +32,4 @@ Nisi cupidatat exercitation irure nulla irure ut Lorem irure Lorem. Ex et sunt e
 
 Elit incididunt anim non magna pariatur dolor id officia irure nostrud aute reprehenderit veniam. Incididunt fugiat sit laboris deserunt et ea id cupidatat ex irure deserunt magna exercitation labore. Enim ad quis consequat ullamco velit dolore dolor labore elit amet sint minim nostrud. Occaecat Lorem sunt reprehenderit cillum. Et Lorem non excepteur tempor laborum laborum. Qui cupidatat adipisicing magna ullamco sit minim fugiat aliqua consectetur fugiat eiusmod.
 
-Cillum enim amet amet dolor sint minim eiusmod consectetur amet labore ut. Velit aliqua minim aute incididunt do. Laboris veniam adipisicing adipisicing ut aliqua do. Qui laborum quis cillum est tempor mollit elit reprehenderit.
+Cillum enim amet amet dolor sint minim eiusmod consectetur amet labore ut. Velit aliqua minim aute incididunt do. Laboris veniam adipisicing adipisicing ut aliqua do. Qui laborum quis cillum est tempor mollit elit reprehenderit. -->

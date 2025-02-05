@@ -1,11 +1,11 @@
----
+<!-- ---
 title: "Buffer Overflow"
 date: "2024-01-15"
 
 layout: ../../layouts/PostLayout.astro
 description: "Learn how to exploit buffer overflows in this post!"
 
-img_path : "/buffer_overflow.png"
+img_path : "/portfolio/buffer_overflow.png"
 img_alt : "Insert image description here"
 ---
 
@@ -54,4 +54,4 @@ To understand more about buffer overflows, you can check out the following resou
 - [Buffer Overflow Exploitation](https://owasp.org/www-community/attacks/Buffer_Overflow)
 - [Buffer Overflow Prevention](https://www.owasp.org/index.php/Buffer_Overflow)
 
-[^1]: Probably yes, if you are reading this post.
+[^1]: Probably yes, if you are reading this post. -->
