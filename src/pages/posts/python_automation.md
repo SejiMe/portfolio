@@ -16,4 +16,3 @@ Python made my fingers orgasm! I've always wanted to try coding with Python and 
 I'm a .NET guy but I wanted to add more arsenals on my backend programming, Python was my next target, I wanted to make some automation tasks for softwares. So I decided to Learn Python by doing the **PROJECT**
 
 Yes! you heard it right, I find myself that I learn fast by immediately applying what I've watched in crash course, or read some documentations, crazy! So I had decided to Automate some work in my current job. I love how this is going.
-

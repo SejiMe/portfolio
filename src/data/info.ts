@@ -56,31 +56,41 @@ export const info = {
       date: "2024",
       description:
         "An API System",
-      link: "https://github.com/bartsimpsonfake/prank-portfolio",
+      link: "https://github.com/SejiMe/portfolio/tree/main/public/APILogbookCensored.png",
       tech: [".NET", "C#", "SQL Server", "Entity Framework Core", "Dapper"],
-      img_alt: "Bart's Portfolio",
-      img_path: "portfolio/simpsons.png",
+      img_alt: "WellCare API (CLDH)",
+      img_path: "portfolio/APILogbookCensored.png",
     },
     {
       title: "Case Mix Collation System",
       date: "2024",
       description:
         "A New module for Legacy System that alters a data to provide for a census report, altering the data by correcting the proper Cases of Patients to their appropriate Case of their Doctor Specialization.",
-      link: "https://github.com/bartsimpsonfake/skate-shop",
+      link: "https://github.com/SejiMe/portfolio/tree/main/public/CaseMix.png",
       tech: ["SQL Server", "WinForms", "C#"],
       img_alt: "Case Mix",
-      img_path: "portfolio/skateboard.png",
+      img_path: "portfolio/CaseMix.png",
     },
     {
       title: "Patient Queueing System (CLDH)",
       date: "2023",
       description:
         "Queueing Management System integrated to BizBox (Healthcare Information System) Facilitating the Queueing of Patients per Departments and Inter-Departments, Generating Reports and maintaining Real-Time Web Socket Connection",
-      link: "https://github.com/bartsimpsonfake/skate-shop",
+      link: "#",
+      tech: ["NextJS", "Prisma", "SQL Server", "WinForms", "C#"],
+      img_alt: "Queueing",
+      img_path: "#",
+    },
+    {
+      title: "Parking Management System (CLDH)",
+      date: "2023",
+      description:
+        "Parking Management System that facilitates the Parking of Vehicles of Patients Printing of Parking Tickets and a Dashboard Metrics for Daily Reports.",
+      link: "#",
       tech: ["NextJS", "Prisma", "SQL Server", "WinForms", "C#"],
       img_alt: "Queueing Collage",
       img_path: "portfolio/skateboard.png",
-    },
+    }
 
   ],
 
