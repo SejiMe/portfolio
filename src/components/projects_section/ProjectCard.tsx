@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import { info } from "../../data/info";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import BgPlaceHolder from "./BgPlaceHolder";
 
 interface ProjectCardProps {
   project: (typeof info)["projects"][number];
@@ -17,13 +19,31 @@ export default function ProjectCard(props: ProjectCardProps) {
           rel="noreferrer"
           aria-label={project.img_alt + ", click to open the project page"}
         >
-          <LazyLoadImage
-            className="h-52 w-full object-cover"
-            src={project.img_path}
-            alt={project.img_alt}
-            width="100%"
-            effect="blur"
-          />
+          {
+            project.img_path != "#" ? 
+              (<Suspense fallback={<BgPlaceHolder/>}>
+                  {/* LazyLoadImage is used to load the image only when it is in the viewport */}
+                    {/* <LazyLoadImage
+                      className="h-52 w-full object-cover"
+                      src={project.img_path}
+                      alt={project.img_alt}
+                      width="100%"
+                      effect="blur"
+                    /> */}
+                <div className="relative group">
+                    <LazyLoadImage
+                      className="h-52 w-full object-cover"
+                      src={project.img_path}
+                      alt={project.img_alt}
+                      width="100%"
+                      effect="blur"
+                    />
+                    <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px] transition-all duration-300 group-hover:backdrop-blur-0 group-hover:bg-black/0"></div>
+                  </div>
+                  {/* <img  className="h-52 w-full object-cover " src="/portfolio/bg.jpg" alt="Loading..." /> */}
+              </Suspense>) : 
+              <BgPlaceHolder/>
+          }
         </a>
       </div>
       <div className="flex-1 bg-primary dark:bg-dk-primary p-6 flex flex-col justify-between">
