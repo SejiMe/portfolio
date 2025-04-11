@@ -43,7 +43,7 @@ export const info = {
         date: "2023 - Present",
         location: "Central Luzon Doctors' Hospital, Tarlac City, Philippines",
         description:
-          "Crafted interactive web and desktop experiences using NextJS, Prisma, Socket.IO, Zustand, WinForms, ASP.NET Core Web API, C#. Often multitasked between coding and supporting with IT Department.",
+          "Developed web and desktop experiences using NextJS, Prisma, Socket.IO, Zustand, WinForms, ASP.NET Core Web API, C#. Often multitasked between coding and supporting with IT Department.",
       },
     ],
 
@@ -55,41 +55,41 @@ export const info = {
       title: "Wellcare API ",
       date: "2024",
       description:
-        "An API System",
+        "A Backend Web API Server for processing Core Features for In-House Systems.",
       link: "https://github.com/SejiMe/portfolio/tree/main/public/APILogbookCensored.png",
       tech: [".NET", "C#", "SQL Server", "Entity Framework Core", "Dapper"],
       img_alt: "WellCare API (CLDH)",
-      img_path: "portfolio/APILogbookCensored.png",
+      img_path: "/portfolio/public/APILogbookCensored.png",
     },
     {
-      title: "Case Mix Collation System",
+      title: "Case Mix Collation System (CLDH)",
       date: "2024",
       description:
-        "A New module for Legacy System that alters a data to provide for a census report, altering the data by correcting the proper Cases of Patients to their appropriate Case of their Doctor Specialization.",
+        "Developed a legacy system module to correct patient case classifications, ensuring accurate census reports aligned with doctor specializations.",
       link: "https://github.com/SejiMe/portfolio/tree/main/public/CaseMix.png",
-      tech: ["SQL Server", "WinForms", "C#"],
+      tech: ["SQL Server", "WinForms .NET Framework", "C#"],
       img_alt: "Case Mix",
-      img_path: "portfolio/CaseMix.png",
+      img_path: "/portfolio/public/CaseMix.png",
     },
     {
       title: "Patient Queueing System (CLDH)",
       date: "2023",
       description:
-        "Queueing Management System integrated to BizBox (Healthcare Information System) Facilitating the Queueing of Patients per Departments and Inter-Departments, Generating Reports and maintaining Real-Time Web Socket Connection",
-      link: "#",
-      tech: ["NextJS", "Prisma", "SQL Server", "WinForms", "C#"],
+        "Built a real-time queue system integrated with BizBox HIS to manage patient flow and reporting.",
+      link: "https://github.com/SejiMe/portfolio/tree/main/public/PatientQueuer.png",
+      tech: ["NextJS", "Prisma", "SQL Server", "WinForms", "C#", "Dapper", "Socket.IO"],
       img_alt: "Queueing",
-      img_path: "#",
+      img_path: "portfolio/public/PatientQueuer.png",
     },
     {
       title: "Parking Management System (CLDH)",
       date: "2023",
       description:
         "Parking Management System that facilitates the Parking of Vehicles of Patients Printing of Parking Tickets and a Dashboard Metrics for Daily Reports.",
-      link: "#",
-      tech: ["NextJS", "Prisma", "SQL Server", "WinForms", "C#"],
+      link: "/portfolio",
+      tech: ["Entity Framework Core", "SQL Server", "WinForms .NET Core", "C#"],
       img_alt: "Queueing Collage",
-      img_path: "portfolio/skateboard.png",
+      img_path: "#",
     }
 
   ],
@@ -98,6 +98,5 @@ export const info = {
     email: "jivanatienza@gmail.com",
     linkedin: "https://www.linkedin.com/in/sejime/",
     github: "https://github.com/SejiMe",
-    reddit: "https://www.reddit.com/user/jaeger1301/",
   },
 };

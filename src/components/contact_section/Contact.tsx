@@ -27,18 +27,18 @@ export default function Contact({ contact, size }: ContactProps) {
       link: contact.linkedin,
       link_alt: "LinkedIn",
     },
-    {
-      name: "reddit",
-      icon: "fa-brands fa-reddit-alien",
-      link: contact.reddit,
-      link_alt: "Reddit",
-    },
-    {
-      name: "rss",
-      icon: "fas fa-rss",
-      link: "/rss.xml",
-      link_alt: "RSS Feed",
-    },
+    // {
+    //   name: "reddit",
+    //   icon: "fa-brands fa-reddit-alien",
+    //   link: contact.reddit,
+    //   link_alt: "Reddit",
+    // },
+    // {
+    //   name: "rss",
+    //   icon: "fas fa-rss",
+    //   link: "/rss.xml",
+    //   link_alt: "RSS Feed",
+    // },
   ];
 
   return (
