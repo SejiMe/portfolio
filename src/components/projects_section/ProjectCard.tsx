@@ -31,13 +31,16 @@ export default function ProjectCard(props: ProjectCardProps) {
                       effect="blur"
                     /> */}
                 <div className="relative group">
-                    <LazyLoadImage
+                    {/* <LazyLoadImage
                       className="h-52 w-full object-cover"
                       src={project.img_path}
                       alt={project.img_alt}
                       width="100%"
                       effect="blur"
-                    />
+                    /> */}
+                  <img className="h-52 w-full object-cover"
+                    src={project.img_path}
+                      alt={project.img_alt} />
                     <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px] transition-all duration-300 group-hover:backdrop-blur-0 group-hover:bg-black/0"></div>
                   </div>
                   {/* <img  className="h-52 w-full object-cover " src="/portfolio/bg.jpg" alt="Loading..." /> */}
