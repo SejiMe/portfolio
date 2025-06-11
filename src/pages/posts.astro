@@ -2,8 +2,17 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Post from "../components/post_section/Post.astro";
 
-const allPosts = await Astro.glob("../pages/posts/*.md");
 
+
+
+const allPostsAsync = async () => {
+  const[posts1, posts2] = await Promise.all([
+    Astro.glob("./posts/*.md"),
+    Astro.glob("./posts/*/*.md")
+  ]);  
+  return [...posts1, ...posts2].map((post)=> post)
+}
+const allPosts = await allPostsAsync();
 // Reorder allPosts by date
 allPosts.sort((a, b) => {
   const dateA = new Date(a.frontmatter.date);

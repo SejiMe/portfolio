@@ -8,7 +8,15 @@ import Blog from "../components/post_section/Blog.astro";
 
 import { Image } from "astro:assets";
 
-const allPosts = await Astro.glob("./posts/*.md");
+const allPostsAsync = async () => {
+  const[posts1, posts2] = await Promise.all([
+    Astro.glob("./posts/*.md"),
+    Astro.glob("./posts/*/*.md")
+  ]);  
+  return [...posts1, ...posts2].map((post)=> post)
+}
+
+const allPosts = await allPostsAsync();
 ---
 
 <BaseLayout title="Home">

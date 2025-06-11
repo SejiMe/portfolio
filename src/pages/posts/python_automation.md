@@ -1,6 +1,6 @@
 ---
 title: "My First Python Project"
-date: "12-03-2024"
+date: "2024-12-03"
 
 layout: ../../layouts/PostLayout.astro
 description: "Python made me programmers' orgasm!"
