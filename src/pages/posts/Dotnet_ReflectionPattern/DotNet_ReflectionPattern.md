@@ -38,7 +38,7 @@ public static class EndpointDiscovery
                 MethodInfo method = GetMethodInfo(type);
                 var instance = ActivatorUtilities.CreateInstance(serviceProvider,  type)
                 var parameters = new object[] { routeBuilder };
-                method?.Invoke(instance, [routeBuilder])
+                method?.Invoke(instance, parameters)
             }
         }
 
