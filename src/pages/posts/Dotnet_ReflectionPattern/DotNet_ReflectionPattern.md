@@ -36,8 +36,9 @@ public static class EndpointDiscovery
             foreach (Type type in types)
             {
                 MethodInfo method = GetMethodInfo(type);
-                var instance = ActivatorUtilities.CreateInstance(serviceProvider, )
+                var instance = ActivatorUtilities.CreateInstance(serviceProvider,  type)
                 var parameters = new object[] { routeBuilder };
+                method?.Invoke(instance, [routeBuilder])
             }
         }
 
