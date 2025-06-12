@@ -21,6 +21,10 @@ Sample Code on IEndpoint Discovery:
 
 ```cs
 
+using System.Reflection;
+
+namespace ims.web.api.hosts;
+
 public static class EndpointDiscovery
 {
     private static Type _endpointType = typeof(IEndpoint);
@@ -32,13 +36,13 @@ public static class EndpointDiscovery
 
         foreach (var ass in assembly)
         {
-            Type[] types = ass.GetTypes();
+            Type[] types = GetAssemblyTypes(ass);
             foreach (Type type in types)
             {
                 MethodInfo method = GetMethodInfo(type);
-                var instance = ActivatorUtilities.CreateInstance(serviceProvider,  type)
+                var instance = ActivatorUtilities.CreateInstance(serviceProvider, type);
                 var parameters = new object[] { routeBuilder };
-                method?.Invoke(instance, parameters)
+                method.Invoke(instance, parameters);
             }
         }
 
@@ -48,12 +52,12 @@ public static class EndpointDiscovery
     private static MethodInfo GetMethodInfo(Type endpointType) 
         => endpointType
             .GetMethod(nameof(IEndpoint.MapEndpoints), BindingFlags.Public | BindingFlags.Static)
-        ?? throw new InvalidOperationException("The endpoint type does not implement the required MapEndpoints method.");
+        ?? throw new InvalidOperationException($"The endpoint type does not implement the required MapEndpoints method. {endpointType.Name}");
     
-    private static Type[] GetType(Assembly assembly) 
+    private static Type[] GetAssemblyTypes(Assembly assembly) 
         => assembly
             .GetTypes()
-            .Where(t => t.IsClass && !t.IsAbstract && _endpointType.IsAssignableFrom(t))
+            .Where(t => _endpointType.IsAssignableFrom(t) && t is { IsAbstract: false, IsInterface: false})
             .ToArray() ?? throw new InvalidOperationException("No endpoint types found in the provided; assembly.");
 }
 
