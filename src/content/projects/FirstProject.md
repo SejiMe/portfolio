@@ -1,10 +1,10 @@
 ---
-title: "Minimal API Monolithic Approach"
+title: "First Project!"
 date: "2025-02-05"
 
-layout: ../../layouts/PostLayout.astro
+layout: ../../layouts/ProjectLayout.astro
 description: "Learn how to exploit buffer overflows in this post!"
-
+technologies: ["C#", "ASP.NET", "Monolithic Architecture"]
 img_path : "/portfolio/APIMonolith.jpg"
 img_alt : "Insert image description here"
 ---

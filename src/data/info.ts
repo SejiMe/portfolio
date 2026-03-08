@@ -3,8 +3,8 @@ export const info = {
   brief_description:
     "I'm a Full Stack Developer that lean more on Backend Development, or you can call me Seji.",
   role: "Full Stack Developer / Software Developer",
-  picture: "/portfolio/bot-c.png",
-  picture_alt: "My Bot",
+  picture: "/bot-c.png",
+  picture_alt: "My Drummer Bot",
   location: "Tarlac, Philippines",
   cv: "/portfolio/resume.pdf",
 
@@ -59,7 +59,7 @@ export const info = {
       link: "https://github.com/SejiMe/portfolio/tree/main/public/APILogbookCensored.png",
       tech: [".NET", "C#", "SQL Server", "Entity Framework Core", "Dapper"],
       img_alt: "WellCare API (CLDH)",
-      img_path: "/portfolio/APILogbookCensored.png",
+      img_path: "/APILogbookCensored.png",
     },
     {
       title: "Case Mix Collation System (CLDH)",
@@ -69,7 +69,7 @@ export const info = {
       link: "https://github.com/SejiMe/portfolio/tree/main/public/CaseMix.png",
       tech: ["SQL Server", "WinForms .NET Framework", "C#"],
       img_alt: "Case Mix",
-      img_path: "/portfolio/CaseMix.png",
+      img_path: "/CaseMix.png",
     },
     {
       title: "Patient Queueing System (CLDH)",
@@ -79,7 +79,7 @@ export const info = {
       link: "https://github.com/SejiMe/portfolio/tree/main/public/PatientQueuer.png",
       tech: ["NextJS", "Prisma", "SQL Server", "WinForms", "C#", "Dapper", "Socket.IO"],
       img_alt: "Queueing",
-      img_path: "/portfolio/PatientQueuer.png",
+      img_path: "/PatientQueuer.png",
     },
     {
       title: "Parking Management System (CLDH)",

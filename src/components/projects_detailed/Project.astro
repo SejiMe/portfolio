@@ -1,12 +1,13 @@
 ---
 import { Image } from "astro:assets";
+import { formatProjectDateOrYear } from "../../utils/projectDate";
 
-const { post } = Astro.props;
+const { project } = Astro.props;
 
-const { slug } = post;
-const { title, description, img_path, img_alt, date } = post.data;
-// generate url manually
-const url = `/posts/${slug}`;
+
+const { slug } = project;
+const { title, description, img_path, img_alt, date } = project.data;
+const url = `/projects/${slug}`;    
 ---
 
 <div
@@ -48,7 +49,7 @@ const url = `/posts/${slug}`;
             class="text-sm font-semibold text-text dark:text-dk-text hover:underline"
             >Read more</a
           >
-          <p class="text-sm text-gray-600 dark:text-gray-400">{date}</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{formatProjectDateOrYear(project.data)}</p>
         </div>
       </div>
     </div>

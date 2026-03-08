@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts"); // replace "posts" with your collection name
+
+  posts.forEach((post) => {
+    console.log(`Post slug: ${post.slug}`); // Log the slug of each post
+  });
+
+  return posts.map((post) => ({
+
+    params: { postslug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render(); // 👈 this replaces <slot />
+
+---
+<Content />

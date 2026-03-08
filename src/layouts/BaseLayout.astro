@@ -2,10 +2,14 @@
 import Nav from "../components/navbar/Nav";
 import TopButton from "../components/TopButton";
 import Pointer from "../components/Pointer";
+import {getCollection} from "astro:content";
 
 const { title } = Astro.props;
-const posts = await Astro.glob("../pages/posts/*.md");
 
+const posts = await getCollection("posts");
+const projects = await getCollection("projects");
+
+const mergedItems = [...posts, ...projects];
 import "../styles/global.css";
 ---
 
@@ -66,8 +70,8 @@ import "../styles/global.css";
       }
     </script>
   </head>
-  <body class="bg-primary dark:bg-dk-primary w-full container mx-auto">
-    <Nav client:visible posts={posts} />
+  <body class="bg-primary dark:bg-dk-primary w-full container mx-auto overflow-hidden ">
+    <Nav client:visible posts={mergedItems} />
     <div class="container mx-auto px-4">
       <slot />
     </div>

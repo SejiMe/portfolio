@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Post from "../../components/post_section/Post.astro";
+import { getCollection } from "astro:content";
+
+
+
+const allPosts = await getCollection("posts");
+// Reorder allPosts by date
+allPosts.sort((a, b) => {
+  const dateA = new Date(a.data.date);
+  const dateB = new Date(b.data.date);
+  return dateB.getTime() - dateA.getTime();
+});
+
+const title = "Posts";
+---
+
+<BaseLayout title={title}>
+  <h1>test 123</h1>
+  
+  <div
+    class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-2 xl:p-5 mt-24"
+  >
+    {
+      allPosts.map((post) => (
+        <div class="mb-4">
+          <Post post={post} />
+        </div>
+      ))
+    }
+  </div>
+</BaseLayout>

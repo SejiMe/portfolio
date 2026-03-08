@@ -10,7 +10,6 @@ const { frontmatter } = Astro.props;
 
 const { title, date, img_path, img_alt } = frontmatter;
 // TODO: add tags here
-
 ---
 
 <BaseLayout title={title}>
@@ -35,7 +34,7 @@ const { title, date, img_path, img_alt } = frontmatter;
           class="text-sm lg:text-base px-4 lg:px-0 flex lg:flex-row flex-col items-center justify-between gap-2"
         >
           <span>{date}</span>
-          <a href="/posts" class="hover:underline">Back to posts</a>
+          <a href="/portfolio/projects" class="hover:underline">Back to projects</a>
         </p>
       </div>
       {

@@ -5,18 +5,19 @@ import ProjectCarousel from "../components/projects_section/ProjectCarousel";
 import Contact from "../components/contact_section/Contact";
 import About from "../components/about_section/About";
 import Blog from "../components/post_section/Blog.astro";
-
+import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
+import { compareProjectsByDateOrYearDesc } from "../utils/projectDate";
 
-const allPostsAsync = async () => {
-  const[posts1, posts2] = await Promise.all([
-    Astro.glob("./posts/*.md"),
-    Astro.glob("./posts/*/*.md")
-  ]);  
-  return [...posts1, ...posts2].map((post)=> post)
-}
+const allPosts = await getCollection("posts");
+const allProjects = await getCollection("projects").then( (projects) => {
+  projects.sort((a, b) => compareProjectsByDateOrYearDesc(a.data, b.data));
+  return projects.map((project) => ({
+    ...project.data,
+    url: `/projects/${project.slug}`,
+  }));
+});
 
-const allPosts = await allPostsAsync();
 ---
 
 <BaseLayout title="Home">
@@ -49,17 +50,13 @@ const allPosts = await allPostsAsync();
       </div>
     </div>
   </section>
-  <section class="lg:m-0
-        my-20
-        mx-2" id="about">
-    <About about={info.about} client:visible />
-  </section>
+ 
 
   <section
     class="lg:h-screen lg:m-0 my-20 mx-2 flex-col flex justify-center w-full"
     id="projects"
   >
-    <ProjectCarousel projects={info.projects} client:only />
+    <ProjectCarousel projects={allProjects} client:only />
   </section>
 
   <section
@@ -69,14 +66,15 @@ const allPosts = await allPostsAsync();
     <Blog posts={allPosts} />
   </section>
 
-  <section
-    class="lg:h-screen lg:m-0 my-20 mx-2 flex-col flex justify-center w-full"
-    id="contact"
-  >
-    <div class="flex flex-row justify-center items-center h-full space-y-4">
-      <Contact contact={info.contact} size="lg" />
-    </div>
+  <section class="h-full lg:m-0 my-20 mx-2 flex-col flex justify-center w-full" id="about">
+      <About about={info.about} client:visible />
   </section>
+
+<section class="lg:h-screen lg:m-0 my-20 mx-2 flex-col flex justify-center w-full" id="contact">
+  <div class="flex flex-row justify-center items-center h-full">
+    <Contact contact={info.contact} size="lg" />
+  </div>
+</section>
 </BaseLayout>
 
 <style>

@@ -1,21 +1,22 @@
 import { Suspense } from "react";
-import { info } from "../../data/info";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import BgPlaceHolder from "./BgPlaceHolder";
+import type { CollectionEntry } from "astro:content";
+import { formatProjectDateOrYear } from "../../utils/projectDate";
 
 interface ProjectCardProps {
-  project: (typeof info)["projects"][number];
+  project: CollectionEntry<"projects">["data"] & { url: string };
 }
 
 export default function ProjectCard(props: ProjectCardProps) {
   const { project } = props;
+  const fullProjectUrl = project.url;
 
   return (
     <div className="flex flex-col bg-primary dark:bg-dk-primary rounded-lg">
       <div className="flex-shrink-0">
         <a
-          href={project.link}
+          href={fullProjectUrl}
           rel="noreferrer"
           aria-label={project.img_alt + ", click to open the project page"}
         >
@@ -53,7 +54,7 @@ export default function ProjectCard(props: ProjectCardProps) {
         <div className="flex-1">
           <p className="text-sm font-medium text-text dark:text-dk-text">
             <a
-              href={project.link}
+              href={fullProjectUrl}
               rel="noreferrer"
               className="hover:underline"
               aria-label="Title of the project, click to open the project page"
@@ -62,7 +63,7 @@ export default function ProjectCard(props: ProjectCardProps) {
             </a>
           </p>
           <a
-            href={project.link}
+            href={fullProjectUrl}
             rel="noreferrer"
             className="block mt-2"
             aria-label="Description of the project, click to open the project page"
@@ -75,7 +76,7 @@ export default function ProjectCard(props: ProjectCardProps) {
 
         <div className="mt-6 flex items-center">
           <div className="flex flex-wrap space-x-2">
-            {project.tech.map((tech) => (
+            {project.technologies.map((tech) => (
               <span
                 className="text-accent dark:text-dk-accent text-xs font-semibold"
                 key={tech}
@@ -85,7 +86,7 @@ export default function ProjectCard(props: ProjectCardProps) {
             ))}
           </div>
           <p className="ml-auto text-sm font-medium text-gray-900">
-            {project.date}
+            {formatProjectDateOrYear(project)}
           </p>
         </div>
       </div>

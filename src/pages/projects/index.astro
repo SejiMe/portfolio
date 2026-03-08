@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Project from "../../components/projects_detailed/Project.astro";
+import { getCollection } from "astro:content";
+import { compareProjectsByDateOrYearDesc } from "../../utils/projectDate";
+
+
+const allProjects = await getCollection("projects");
+
+allProjects.sort((a, b) => {
+  return compareProjectsByDateOrYearDesc(a.data, b.data);
+});
+
+const title = "Projects";
+---
+
+<BaseLayout title={title}>
+  <div
+    class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-2 xl:p-5 mt-24"
+  >
+    {
+      allProjects.map((project) => (
+        <div class="mb-4">
+          <Project project={project} />
+        </div>
+      ))
+    }
+  </div>
+</BaseLayout>

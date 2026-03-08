@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects"); // replace "posts" with your collection name
+
+  return projects.map((project) => ({
+
+    params: { projectslug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render(); // 👈 this replaces <slot />
+
+---
+<Content />

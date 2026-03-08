@@ -1,14 +1,13 @@
-import React, { useEffect } from "react";
-
+import React from "react";
+import type { CollectionEntry } from "astro:content";
 import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProjectCard from "./ProjectCard";
-import { info } from "../../data/info";
 
-interface ProjectCarouselProps {
-  projects: (typeof info)["projects"];
+type ProjectCarouselProps = {
+  projects: Array<CollectionEntry<"projects">["data"] & { url: string }>;
 }
 
 function CustomArrow(props: any) {
@@ -49,7 +48,6 @@ function CustomArrow(props: any) {
 
 export default function ProjectCarousel(props: ProjectCarouselProps) {
   const { projects } = props;
-  const initialMount = React.useRef(true);
 
   var settings = {
     dots: true,
