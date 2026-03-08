@@ -5,8 +5,7 @@ description: "Developed a legacy system module to correct patient case classific
 link: ""
 technologies: ["SQL Server", "WinForms .NET Framework", "C#"]
 img_alt: "Case Mix"
-img_path: "/src/content/projects/Case Mix Collation System CLDH/CaseMix.webp"
-layout: "../../../layouts/ProjectLayout.astro"
+img_path: "./CaseMix.webp"
 ---
 
 ## Overview

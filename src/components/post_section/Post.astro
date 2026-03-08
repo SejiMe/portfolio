@@ -10,14 +10,14 @@ const url = `/portfolio/posts/${slug}`;
 ---
 
 <div
-  class="relative bg-primary rounded-lg shadow-sm dark:shadow-dk-secondary dark:bg-dk-primary transform transition duration-500 hover:scale-105 h-80 md:h-96 overflow-hidden"
+  class="relative bg-primary shadow-md rounded-lg dark:shadow-dk-secondary dark:bg-dk-primary transform transition duration-500 hover:scale-105 overflow-hidden"
 >
-  <div class="w-full p-0 flex justify-center md:mb-6 mb-2 h-30 md:h-40 overflow-hidden">
+  <div class="w-full">
     {
       img_path && (
-        <a href={url} class="w-full h-full">
+        <a href={url} class="block w-full">
           <Image
-            class="rounded-t-md w-full h-full object-cover"
+            class="w-full md:h-56 h-28 object-cover rounded-t-lg"
             src={img_path}
             alt={img_alt || title}
             width={1200}
@@ -28,7 +28,7 @@ const url = `/portfolio/posts/${slug}`;
     }
   </div>
 
-  <div class="px-4 pb-3 h-40 md:h-40">
+  <div class="px-4 pt-4 pb-3 md:h-40 h-36 bg-slate-100 dark:bg-transparent">
     <div>
       <a href={url}>
         <h5

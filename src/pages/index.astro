@@ -59,16 +59,16 @@ const allProjects = await getCollection("projects").then( (projects) => {
     <ProjectCarousel projects={allProjects} client:only />
   </section>
 
-  <section
-    class="lg:h-screen lg:m-0 my-20 flex-col flex justify-center w-full"
-    id="blog"
-  >
-    <Blog posts={allPosts} />
-  </section>
+<section
+  class="lg:h-screen lg:m-0 my-20 flex-col flex justify-center w-full"
+  id="blog"
+>
+  <Blog posts={allPosts} />
+</section>
 
-  <section class="h-full lg:m-0 my-20 mx-2 flex-col flex justify-center w-full" id="about">
-      <About about={info.about} client:visible />
-  </section>
+<section class="h-full lg:m-0 my-20 mx-2 flex-col flex justify-center w-full" id="about">
+    <About about={info.about} client:visible />
+</section>
 
 <section class="lg:h-screen lg:m-0 my-20 mx-2 flex-col flex justify-center w-full" id="contact">
   <div class="flex flex-row justify-center items-center h-full">

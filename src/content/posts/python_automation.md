@@ -2,10 +2,9 @@
 title: "My First Python Project"
 date: "2024-12-03"
 
-layout: ../../layouts/PostLayout.astro
 description: "Python made me programmers' orgasm!"
 
-img_path : "/portfolio/paper.png"
+img_path : "./paper.png"
 img_alt: "Insert image description here"
 ---
 

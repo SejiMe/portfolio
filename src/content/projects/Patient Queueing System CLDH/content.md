@@ -5,7 +5,7 @@ description: "Built a real-time queue system integrated with BizBox HIS to manag
 link: "https://github.com/SejiMe/portfolio/tree/main/public/PatientQueuer.png"
 technologies: ["NextJS", "Prisma", "SQL Server", "WinForms", "C#", "Dapper", "Socket.IO"]
 img_alt: "Queueing"
-img_path: "/portfolio/PatientQueuer.png"
+img_path: "./PatientQueuer.png"
 ---
 
 ## Overview

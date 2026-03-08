@@ -5,7 +5,7 @@ description: "Parking Management System that facilitates the Parking of Vehicles
 link: "/portfolio"
 technologies: ["Entity Framework Core", "SQL Server", "WinForms .NET Core", "C#"]
 img_alt: "Queueing Collage"
-img_path: "#"
+img_path: "./bg.jpg"
 ---
 
 ## Overview

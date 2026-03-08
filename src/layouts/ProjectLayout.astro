@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { formatProjectDateOrYear } from "../utils/projectDate";
 
 import BaseLayout from "./BaseLayout.astro";
 
@@ -8,7 +9,8 @@ import Contact from "../components/contact_section/Contact";
 
 const { frontmatter } = Astro.props;
 
-const { title, date, img_path, img_alt } = frontmatter;
+const { title, img_path, img_alt } = frontmatter;
+const dateText = formatProjectDateOrYear(frontmatter);
 // TODO: add tags here
 ---
 
@@ -33,7 +35,7 @@ const { title, date, img_path, img_alt } = frontmatter;
         <p
           class="text-sm lg:text-base px-4 lg:px-0 flex lg:flex-row flex-col items-center justify-between gap-2"
         >
-          <span>{date}</span>
+          <span>{dateText}</span>
           <a href="/portfolio/projects" class="hover:underline">Back to projects</a>
         </p>
       </div>

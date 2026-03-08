@@ -2,10 +2,9 @@
 title: "EF Core Design Time Setup!"
 date: "2025-06-15"
 
-layout: "../../layouts/PostLayout.astro"
 description: "Learn how you can setup your EF Core Design Time Factory for Code First Approach"
 
-img_path : "/portfolio/posts/LucaBravo_unsplash.webp"
+img_path : "./LucaBravo_unsplash.webp"
 img_alt : "Code by Luca Bravo on Unsplash"
 ---
 

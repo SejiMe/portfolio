@@ -7,29 +7,29 @@ const { project } = Astro.props;
 
 const { slug } = project;
 const { title, description, img_path, img_alt, date } = project.data;
-const url = `/projects/${slug}`;    
+const url = `/portfolio/projects/${slug}`;    
 ---
 
 <div
-  class="relative bg-primary rounded-lg shadow-sm dark:shadow-dk-secondary dark:bg-dk-primary transform transition duration-500 hover:scale-105"
+  class="relative bg-primary rounded-lg shadow-md shad dark:shadow-dk-secondary dark:bg-dk-primary transform transition duration-500 hover:scale-105 overflow-hidden"
 >
-  <div class="p-2 flex justify-center">
+  <div class="w-full">
     {
       img_path && (
-        <a href={url}>
+        <a href={url} class="block w-full">
           <Image
-            class="rounded-md w-full md:h-56 h-28 object-cover"
+            class="w-full md:h-56 h-28 object-cover rounded-t-lg"
             src={img_path}
             alt={img_alt || title}
-            width={300}
-            height={200}
+            width={1200}
+            height={600}
           />
         </a>
       )
     }
   </div>
 
-  <div class="px-4 pb-3 md:h-40 h-36">
+  <div class="px-4 pt-4 pb-3 md:h-40 h-36 bg-slate-200 dark:bg-transparent">
     <div>
       <a href={url}>
         <h5
@@ -39,7 +39,7 @@ const url = `/projects/${slug}`;
         </h5>
       </a>
 
-      <p class="antialiased text-text dark:text-dk-text text-sm break-keep">
+      <p class="antialiased text-text dark:text-dk-text text-sm line-clamp-3 overflow-hidden">
         {description}
       </p>
       <div class="flex items-center justify-between mt-4">

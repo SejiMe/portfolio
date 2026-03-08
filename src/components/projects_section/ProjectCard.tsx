@@ -21,7 +21,7 @@ export default function ProjectCard(props: ProjectCardProps) {
           aria-label={project.img_alt + ", click to open the project page"}
         >
           { 
-            project.img_path != "#" ? 
+            project.img_path ? 
               (<Suspense fallback={<BgPlaceHolder/>}>
                   {/* LazyLoadImage is used to load the image only when it is in the viewport */}
                     {/* <LazyLoadImage
@@ -40,7 +40,7 @@ export default function ProjectCard(props: ProjectCardProps) {
                       effect="blur"
                     /> */}
                   <img className="w-full h-40 object-cover rounded-t-lg"
-                    src={project.img_path}
+                    src={project.img_path.src}
                       alt={project.img_alt} />
                     <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px] transition-all duration-300 group-hover:backdrop-blur-0 group-hover:bg-black/0"></div>
                   </div>

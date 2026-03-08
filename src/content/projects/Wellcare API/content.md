@@ -1,12 +1,11 @@
 ---
 title: "Wellcare API "
 year: "2024"
-layout: "../../../layouts/ProjectLayout.astro"
 description: "A Backend Web API Server for processing Core Features for In-House Systems."
 link: "https://github.com/SejiMe/portfolio/tree/main/public/APILogbookCensored.png"
 technologies: [".NET", "C#", "SQL Server", "Entity Framework Core", "Dapper"]
 img_alt: "WellCare API (CLDH)"
-img_path: "/portfolio/APILogbookCensored.png"
+img_path: "./APILogbookCensored.png"
 ---
 
 ## Overview

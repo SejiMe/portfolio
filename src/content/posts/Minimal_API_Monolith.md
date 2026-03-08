@@ -2,10 +2,9 @@
 title: "Minimal API Monolithic Approach"
 date: "2025-02-05"
 
-layout: ../../layouts/PostLayout.astro
 description: "Learn how to exploit buffer overflows in this post!"
 
-img_path : "/portfolio/APIMonolith.jpg"
+img_path : "./APIMonolith.jpg"
 img_alt : "Insert image description here"
 ---
 
