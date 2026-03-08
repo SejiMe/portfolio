@@ -52,16 +52,6 @@ export const info = {
 
   projects: [
     {
-      title: "Wellcare API ",
-      date: "2024",
-      description:
-        "A Backend Web API Server for processing Core Features for In-House Systems.",
-      link: "https://github.com/SejiMe/portfolio/tree/main/public/APILogbookCensored.png",
-      tech: [".NET", "C#", "SQL Server", "Entity Framework Core", "Dapper"],
-      img_alt: "WellCare API (CLDH)",
-      img_path: "/APILogbookCensored.png",
-    },
-    {
       title: "Case Mix Collation System (CLDH)",
       date: "2024",
       description:
