@@ -13,14 +13,14 @@ export default function ProjectCard(props: ProjectCardProps) {
   const fullProjectUrl = project.url;
 
   return (
-    <div className="flex flex-col bg-primary dark:bg-dk-primary rounded-lg">
+    <div className="flex flex-col pb-2 h-[54vh] bg-primary shadow-md dark:bg-dk-primary rounded-lg border border-gray-200 dark:border-dk-secondary overflow-hidden">
       <div className="flex-shrink-0">
         <a
           href={fullProjectUrl}
           rel="noreferrer"
           aria-label={project.img_alt + ", click to open the project page"}
         >
-          {
+          { 
             project.img_path != "#" ? 
               (<Suspense fallback={<BgPlaceHolder/>}>
                   {/* LazyLoadImage is used to load the image only when it is in the viewport */}
@@ -31,7 +31,7 @@ export default function ProjectCard(props: ProjectCardProps) {
                       width="100%"
                       effect="blur"
                     /> */}
-                <div className="relative group">
+                <div className="relative group -mx-2">
                     {/* <LazyLoadImage
                       className="h-52 w-full object-cover"
                       src={project.img_path}
@@ -39,7 +39,7 @@ export default function ProjectCard(props: ProjectCardProps) {
                       width="100%"
                       effect="blur"
                     /> */}
-                  <img className="h-52 w-full object-cover"
+                  <img className="w-full h-40 object-cover rounded-t-lg"
                     src={project.img_path}
                       alt={project.img_alt} />
                     <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px] transition-all duration-300 group-hover:backdrop-blur-0 group-hover:bg-black/0"></div>
@@ -56,7 +56,7 @@ export default function ProjectCard(props: ProjectCardProps) {
             <a
               href={fullProjectUrl}
               rel="noreferrer"
-              className="hover:underline"
+              className="hover:underline text-xl font-bold"
               aria-label="Title of the project, click to open the project page"
             >
               {project.title}
@@ -68,7 +68,7 @@ export default function ProjectCard(props: ProjectCardProps) {
             className="block mt-2"
             aria-label="Description of the project, click to open the project page"
           >
-            <p className="text-xl font-semibold text-gray-900">
+            <p className="text-lg font-light w-full h-15 text-gray-900 line-clamp-2">
               {project.description}
             </p>
           </a>
@@ -76,7 +76,7 @@ export default function ProjectCard(props: ProjectCardProps) {
 
         <div className="mt-6 flex items-center">
           <div className="flex flex-wrap space-x-2">
-            {project.technologies.map((tech) => (
+            {project.technologies.map((tech: string) => (
               <span
                 className="text-accent dark:text-dk-accent text-xs font-semibold"
                 key={tech}

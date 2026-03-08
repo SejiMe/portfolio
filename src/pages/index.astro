@@ -14,7 +14,7 @@ const allProjects = await getCollection("projects").then( (projects) => {
   projects.sort((a, b) => compareProjectsByDateOrYearDesc(a.data, b.data));
   return projects.map((project) => ({
     ...project.data,
-    url: `/projects/${project.slug}`,
+    url: `/portfolio/projects/${project.slug}`,
   }));
 });
 

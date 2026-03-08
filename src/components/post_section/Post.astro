@@ -6,29 +6,29 @@ const { post } = Astro.props;
 const { slug } = post;
 const { title, description, img_path, img_alt, date } = post.data;
 // generate url manually
-const url = `/posts/${slug}`;
+const url = `/portfolio/posts/${slug}`;
 ---
 
 <div
-  class="relative bg-primary rounded-lg shadow-sm dark:shadow-dk-secondary dark:bg-dk-primary transform transition duration-500 hover:scale-105"
+  class="relative bg-primary rounded-lg shadow-sm dark:shadow-dk-secondary dark:bg-dk-primary transform transition duration-500 hover:scale-105 h-80 md:h-96 overflow-hidden"
 >
-  <div class="p-2 flex justify-center">
+  <div class="w-full p-0 flex justify-center md:mb-6 mb-2 h-30 md:h-40 overflow-hidden">
     {
       img_path && (
-        <a href={url}>
+        <a href={url} class="w-full h-full">
           <Image
-            class="rounded-md w-full md:h-56 h-28 object-cover"
+            class="rounded-t-md w-full h-full object-cover"
             src={img_path}
             alt={img_alt || title}
-            width={300}
-            height={200}
+            width={1200}
+            height={600}
           />
         </a>
       )
     }
   </div>
 
-  <div class="px-4 pb-3 md:h-40 h-36">
+  <div class="px-4 pb-3 h-40 md:h-40">
     <div>
       <a href={url}>
         <h5
@@ -38,7 +38,7 @@ const url = `/posts/${slug}`;
         </h5>
       </a>
 
-      <p class="antialiased text-text dark:text-dk-text text-sm break-keep">
+      <p class="antialiased text-text dark:text-dk-text text-sm line-clamp-3 overflow-hidden">
         {description}
       </p>
       <div class="flex items-center justify-between mt-4">
@@ -48,7 +48,7 @@ const url = `/posts/${slug}`;
             class="text-sm font-semibold text-text dark:text-dk-text hover:underline"
             >Read more</a
           >
-          <p class="text-sm text-gray-600 dark:text-gray-400">{date}</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{date.toLocaleDateString()}</p>
         </div>
       </div>
     </div>

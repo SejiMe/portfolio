@@ -5,13 +5,14 @@ import robotsTxt from "astro-robots-txt";
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 
 import sitemap from "@astrojs/sitemap";
-const LIVE_URL = "https://sejime.github.io/"
+const LIVE_URL = "https://sejime.github.io/portfolio"
 const LOCAL_URL = "https://localhost:4000/"
 // https://astro.build/config
 export default defineConfig({
   markdown: {
     rehypePlugins: [rehypeAccessibleEmojis],
   },
+  base: "/portfolio",
   site: LIVE_URL,
   integrations: [tailwind(), react(), robotsTxt(), sitemap()]
 });

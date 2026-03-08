@@ -5,7 +5,7 @@ date: "2025-06-11"
 layout: ../../../layouts/PostLayout.astro
 description: "An article for using Reflection Pattern in Discovering your API Endpoints."
 
-img_path : "/juan-davila-P8PlK2nGwqA-unsplash.webp"
+img_path : "/portfolio/juan-davila-P8PlK2nGwqA-unsplash.webp"
 img_alt : "Reflection of Wooded Lake Island in a Lake"
 ---
 

@@ -6,7 +6,7 @@ description: "A Backend Web API Server for processing Core Features for In-House
 link: "https://github.com/SejiMe/portfolio/tree/main/public/APILogbookCensored.png"
 technologies: [".NET", "C#", "SQL Server", "Entity Framework Core", "Dapper"]
 img_alt: "WellCare API (CLDH)"
-img_path: "/APILogbookCensored.png"
+img_path: "/portfolio/APILogbookCensored.png"
 ---
 
 ## Overview

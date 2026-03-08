@@ -1,11 +1,11 @@
 ---
-title: "N8n_Automation!"
+title: "Dengue API Workflow Automation"
 date: "2026-01-17"
 
 layout: "../../../layouts/ProjectLayout.astro"
-description: "Automating RESTful APIs with N8n"
+description: "Automating RESTful API calls with N8n"
 technologies: ["N8n", "RESTful APIs (ASP.NET C#)", "Google Sheets API", "Discord API"]
-img_path : "/src/content/projects/N8n_Automation/N8n_Automation.webp"
+img_path : "/src/content/projects/Dengue API Workflow Automation/N8n_Automation.webp"
 img_alt : "N8n Workflow"
 ---
 
