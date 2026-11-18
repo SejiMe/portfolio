@@ -113,6 +113,7 @@ test('search animation, themed scrollbar and resume-backed content',async({page}
  await expect(page.locator('.job summary').last()).toContainText('IT Intern');
  await expect(page.getByRole('heading',{name:'Certifications'})).toBeVisible();
  await expect(page.locator('a[href$=".pdf"],a[download]')).toHaveCount(0);
+ expect((await page.request.get('/portfolio/resume.pdf')).status()).toBe(404);
  await page.emulateMedia({reducedMotion:'reduce'});
  await page.getByRole('button',{name:'Search portfolio'}).click();
  await expect(dialog).toHaveCSS('animation-name','none');

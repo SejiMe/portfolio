@@ -8,8 +8,8 @@ const projects = new Map((await getCollection('projects')).map(p => [p.slug,p.da
 <Base title="My Career Profile" career>
   <main class="profile document-page">
     <header class="document-heading" id="ai-work-title">
-      <p class="eyebrow">{info.name}</p>
-      <h1>My Career Profile</h1>
+      <p class="eyebrow">My Career Profile</p>
+      <h1>{info.name}</h1>
       <p>{info.role} · {info.location}</p>
     </header>
 
