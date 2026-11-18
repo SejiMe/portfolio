@@ -36,7 +36,11 @@ test('About links open the technology directory and career profile', async ({pag
   expect(await page.locator('.tool-logos img').first().evaluate(i => i.complete && i.naturalWidth > 0)).toBe(true);
   await page.getByRole('link',{name:/Read how I work with AI/}).click();
   await expect(page.getByRole('heading',{level:1})).toHaveText('How I work with AI');
-  await expect(page.getByRole('article')).toContainText('structured output');
+  await expect(page.getByRole('article').getByRole('heading', {level:2})).toHaveText([
+    'CLDH: API development and SQL',
+    'Accenture and ReadyTech: defect triage and browser testing',
+    'HaXus: turning a requirement into a test'
+  ]);
   await page.goto('./#about');
   await page.getByRole('link',{name:'My Career Profile'}).click();
   const nav = page.locator(isMobile ? '.mobile-nav nav' : '.desktop-nav');

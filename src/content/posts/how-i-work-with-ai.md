@@ -1,28 +1,26 @@
 ---
 title: "How I work with AI"
-description: "How I scope coding agents, connect tools and verify a workflow before it handles real work."
+description: "How I used AI in hospital software development at CLDH and quality engineering at Accenture for ReadyTech, and how I apply those lessons to HaXus."
 date: 2026-11-18
 img_alt: ""
 ---
 
-A message arrives through a webhook. Someone needs to decide what it means, where to record it and whether to send a reply. In [Meta Chatter](/portfolio/projects/meta-chatter/), a client proof of concept, that handoff gave me a specific question to test. Can a local model help classify a message while the application stays in charge of what happens next?
+## CLDH: API development and SQL
 
-## Separate the decision from the action
+At Central Luzon Doctors’ Hospital (CLDH), I used ChatGPT and Codex to scaffold REST endpoints, work through complex SQL queries and draft test cases. This was part of my work as a software developer on internal hospital systems, including the WellCare platform.
 
-The workflow normalizes the incoming message before passing it to an Ollama-assisted classifier. A structured output parser gives the routing step fields it can inspect. Downstream nodes handle the Google Sheets integration and outbound messaging requests. That boundary gives me three places to investigate when something goes wrong: the input, the classification and the action selected by the router.
+Scaffolding gave me a starting point for an endpoint. Deciding what it should return took a conversation with the people who used the system. The same distinction mattered for SQL. A rewritten query could run faster and still produce the wrong figures for a hospital report. Code review, automated tests and user acceptance testing gave me ways to check those changes. [WellCare case study](/portfolio/projects/wellcare-api/content/)
 
-One check I would run before enabling live sends is to replay an ambiguous message. I want to see the exact fields the parser returns and which route consumes them. A plausible-looking reply tells me very little about whether the right destination was selected.
+## Accenture and ReadyTech: defect triage and browser testing
 
-## Give the coding agent a small, testable job
+At Accenture Philippines, I supported ReadyTech’s enterprise applications. I used custom Claude skills to make recurring code-review steps repeatable and SonarQube to identify issues worth investigating. That combination helped me triage defects and decide where to look more closely.
 
-I use Claude Code and Codex for work such as scaffolding APIs, refactoring SQL and drafting tests. I start by naming the behavior to preserve and the files or tools the task needs. For a defect, that can be one failing case, the affected component and the command that reproduces it.
+For the React applications, I used Argus and Claude-assisted workflows to trigger Playwright tests. A code audit could flag a suspicious change. Running the browser test let me see whether the affected interaction actually worked. [Enterprise delivery case study](/portfolio/projects/enterprise-delivery/)
 
-A reusable skill records instructions worth repeating across tasks. The harness connects those instructions to the repository, tools and verification steps. Keeping the acceptance check explicit lets me review a proposed change even when another developer or agent implements it.
+## HaXus: turning a requirement into a test
 
-## Verify at the boundary a user depends on
+HaXus is my personal project. I use AI during planning to turn a workflow in my project notes into a concrete acceptance scenario. I bring the same two questions I used at work: what does the person using this system expect, and what would I have to observe to know it worked?
 
-A test generated from an implementation can repeat its assumptions. I review its inputs and expected result against the original requirement, then check a failure path. For a routing workflow that might be an incomplete model response. For a web feature it might be a user retrying an action after validation fails.
+One example comes from Hanay, the fleet-management part of HaXus. A bus is scheduled to reach a terminal and make a return trip. Suppose its scheduled arrival time has passed, but nobody has confirmed that it arrived. Should the dispatcher be able to start the return leg?
 
-In [enterprise SaaS delivery](/portfolio/projects/enterprise-delivery/) I used custom Claude skills alongside SonarQube for defect triage, and Playwright and Argus for end-to-end validation. Static analysis and a browser check answer different questions. I still review the diff and the observed result before accepting the change.
-
-For a business owner, the handoff should be concrete. Which recurring step now runs automatically? Who can inspect an unexpected result? What evidence shows that the workflow reached the intended destination? Those questions guide what I build and what I test.
+I can give an assistant that question along with the proposed dispatch rules and ask it to draft the two cases. With the arrival still unconfirmed, the return leg should stay blocked. Once the arrival is confirmed, the dispatcher can prepare the return trip, and departure still needs an explicit release. I review both cases against the project notes before treating them as acceptance criteria. At this stage the result is a testable design for Hanay.
