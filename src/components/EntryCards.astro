@@ -1,0 +1,12 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import {formatProjectDateOrYear} from '../utils/projectDate';
+interface Props {entries: Array<CollectionEntry<'posts'> | CollectionEntry<'projects'>>}
+const {entries}=Astro.props;
+---
+<div class="cards">{entries.map(e=><a class:list={['entry', {'typographic-entry':!e.data.img_path}]} href={'/portfolio/'+e.collection+'/'+e.slug+'/'}>
+{e.data.img_path ? <img src={e.data.img_path.src} alt={e.data.img_alt} loading="lazy"/> : <div class="entry-art" aria-hidden="true"><span>{e.collection==='posts'?'Notes & ideas':'Engineering & systems'}</span><strong>{e.data.title.split(' ').slice(0,3).join(' ')}</strong></div>}
+<div class="entry-copy"><small>{formatProjectDateOrYear(e.data) || (e.collection==='projects'?'Project':'Article')}</small><h3>{e.data.title}</h3><p>{e.data.description}</p>
+{'technologies' in e.data && <ul class="tech-list">{e.data.technologies.map(t=><li>{t}</li>)}</ul>}
+<span class="entry-link">Read {e.collection==='posts'?'article':'case study'} <span aria-hidden="true">↗</span></span>
+</div></a>)}</div>

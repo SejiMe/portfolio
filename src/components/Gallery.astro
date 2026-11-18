@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/BaseLayout.astro';
+import Cards from './EntryCards.astro';
+const {entries,title,description}=Astro.props;
+---
+<Base title={title}><main class="listing gallery" data-gallery>
+<div class="gallery-heading"><h1>{title}</h1><p>{description}</p></div>
+<div class="gallery-viewport" tabindex="0" aria-label={title+' exhibition'}><Cards entries={entries}/></div>
+<div class="gallery-controls" hidden><button class="button" data-previous aria-label="Previous gallery page">←</button><span data-page-status role="status" aria-live="polite"></span><button class="button" data-next aria-label="Next gallery page">→</button></div>
+</main></Base>
+<script>import '../scripts/gallery.js';</script>

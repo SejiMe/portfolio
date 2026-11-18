@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/BaseLayout.astro';
+import {getCollection} from 'astro:content';
+import {info} from '../data/info';
+import {experience, certifications, awards} from '../data/career.mjs';
+const projects = new Map((await getCollection('projects')).map(p => [p.slug,p.data.title]));
+---
+<Base title="My Career Profile" career>
+  <main class="profile document-page">
+    <header class="document-heading" id="ai-work-title">
+      <p class="eyebrow">{info.name}</p>
+      <h1>My Career Profile</h1>
+      <p>{info.role} · {info.location}</p>
+    </header>
+
+    <section class="profile-section" id="experience" aria-labelledby="experience-title">
+      <h2 id="experience-title">Experience</h2>
+      <div class="job-list">{experience.map(job => (
+        <details class="job">
+          <summary>
+            <span class="job-heading"><strong>{job.title}</strong><span>{job.company}</span></span>
+            <span class="job-period"><b>{job.duration}</b><small>{job.date}</small></span>
+            <span class="disclosure-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="job-content">
+            <p>{job.description}</p>
+            <ul>{job.highlights.map(item => <li>{item}</li>)}</ul>
+            {job.projects.length > 0 && <div class="related-work">
+              <h3>Project case studies</h3>
+              {job.projects.map(slug => <a href={'/portfolio/projects/'+slug+'/'}>{projects.get(slug)} ↗</a>)}
+            </div>}
+          </div>
+        </details>
+      ))}</div>
+    </section>
+    <section class="profile-section" id="education" aria-labelledby="education-title">
+      <h2 id="education-title">Education</h2>
+      <ul class="credentials">{info.about.education.map(e => <li><small>{e.date}</small><h3>{e.title}</h3><p>{e.location}</p>{e.thesis && <a href="/portfolio/projects/barangay-capstone/">{e.thesis} ↗</a>}</li>)}</ul>
+      <details class="honors"><summary>Academic awards</summary><ul>{awards.map(a => <li>{a}</li>)}</ul></details>
+    </section>
+    <section class="profile-section" id="certifications" aria-labelledby="certifications-title">
+      <h2 id="certifications-title">Certifications</h2>
+      <ul class="credentials">{certifications.map(c => <li><small>{c.date}</small><h3>{c.title}</h3><p>{c.issuer}</p></li>)}</ul>
+    </section>
+  </main>
+</Base>
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>('.mobile-nav')!;
+  menu.querySelector('nav')!.addEventListener('click', () => { menu.open = false; });
+  const sections = [...document.querySelectorAll<HTMLElement>('.profile-section')];
+  function selectSection() {
+    const current = window.scrollY + innerHeight >= document.documentElement.scrollHeight - 2
+      ? sections.at(-1) : sections.filter(section => section.getBoundingClientRect().top <= 110).at(-1) ?? sections[0];
+    document.querySelectorAll<HTMLElement>('[data-chapter]').forEach(link => {
+      if (link.dataset.chapter === current?.id) link.setAttribute('aria-current','location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+  selectSection();
+  window.addEventListener('scroll', selectSection, {passive:true});
+  window.addEventListener('resize', selectSection);
+</script>

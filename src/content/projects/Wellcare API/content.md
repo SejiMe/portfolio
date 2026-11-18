@@ -28,3 +28,11 @@ I prepared the API server to be easily extendable by using Vertical Slice Archit
 I have limited the codebase to not include **CQRS** design to not overcomplicate the codebase considering the number of developers that will maintain the codebase in the current and future. I have also limited the codebase to not include **MediatR** library to avoid unnecessary abstraction and complexity in the codebase, as well as to avoid adding an additional dependency to the project. The API is designed to be easily extendable, allowing for the addition of new features and endpoints without significant refactoring, so I focused on implementing a clean and maintainable codebase that can be easily understood and modified by developers of varying experience levels.
 
 
+
+## Resume-backed platform delivery
+
+During my Software Developer role at Central Luzon Doctors’ Hospital, September 2023–July 2026, the WellCare platform supported 7+ clinical departments. My .NET developer resume identifies WellCare v4 as the centralized hospital management platform using ASP.NET Core and Blazor WebAssembly.
+
+I modernized 30+ legacy endpoints into versioned RESTful APIs with dependency injection, custom middleware and JWT/OAuth2 authentication. I worked directly with subject matter experts to translate operational needs into technical designs.
+
+The wider hospital work included notification integrations, physician scheduling, reporting and an internal knowledge base. xUnit/bUnit tests, code reviews and UAT sign-offs supported delivery.

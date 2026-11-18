@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 510" aria-hidden="true">
+<defs><linearGradient id="ice"><stop stop-color="#00e9eb"/><stop offset=".48" stop-color="#4564f2"/><stop offset="1" stop-color="#e000ee"/></linearGradient><linearGradient id="fold" x2=".8" y2="1"><stop stop-color="#160d70"/><stop offset="1" stop-color="#4333ee"/></linearGradient></defs>
+<g fill="url(#ice)">
+<path data-ribbon="s" d="M193 226V155Q193 132 218 119L428 9Q442 1 460 10L536 49Q549 56 536 63L213 224Q199 232 194 248Z"/>
+<path data-ribbon="e" fill="url(#fold)" d="M193 246Q193 230 212 221L259 197L374 256Q388 263 374 271L315 303Q304 309 293 303L209 261Q194 253 193 246Z"/>
+<path data-ribbon="jfold" fill="url(#fold)" d="M331 189Q318 182 332 173L392 142Q404 136 414 142L507 189Q527 200 524 224L517 248L458 257Z"/>
+<path data-ribbon="j" d="M524 211Q523 230 505 239L202 393Q189 400 201 407L278 447Q292 453 307 445L499 346Q525 333 525 303Z"/></g>
+<g visibility="hidden">
+<path id="letter-s" d="M143 170H49Q24 170 24 194V246Q24 266 48 266H112V293H24V329H130Q151 329 151 307V253Q151 232 129 232H62V205H143Z"/>
+<path id="letter-e" d="M282 170H418V205H321V232H400V266H321V294H418V329H282Z"/>
+<path id="letter-jfold" d="M581 170H687V205H581Z"/>
+<path id="letter-j" d="M648 205H687V289Q687 329 646 329H564V293H633Q648 293 648 279Z"/></g></svg>

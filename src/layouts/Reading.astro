@@ -1,0 +1,10 @@
+---
+import Base from './BaseLayout.astro';
+import {formatProjectDateOrYear} from '../utils/projectDate';
+import {info} from '../data/info';
+const {entry,collection}=Astro.props;
+---
+<Base title={entry.title}><main class="reading"><a href={'/portfolio/'+collection+'/'}>← {collection==='posts'?'All writing':'All projects'}</a>
+<h1>{entry.title}</h1><small>{formatProjectDateOrYear(entry) && <span>{formatProjectDateOrYear(entry)} · </span>}<a href="/portfolio/about/">{info.name}</a></small>
+{entry.img_path && <img class="cover" src={entry.img_path.src} alt={entry.img_alt}/>}
+<article><slot/></article><footer><a href={'/portfolio/#'+(collection==='posts'?'writing':'work')}>Return to portfolio →</a></footer></main></Base>

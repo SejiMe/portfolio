@@ -1,29 +1,7 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Project from "../../components/projects_detailed/Project.astro";
-import { getCollection } from "astro:content";
-import { compareProjectsByDateOrYearDesc } from "../../utils/projectDate";
-
-const allProjects = await getCollection("projects");
-
-allProjects.sort((a, b) => {
-  return compareProjectsByDateOrYearDesc(a.data, b.data);
-});
-
-const title = "Projects";
+import Gallery from '../../components/Gallery.astro';
+import {getCollection} from 'astro:content';
+import {compareEntries} from '../../utils/gallery.mjs';
+const entries=(await getCollection('projects')).sort(compareEntries);
 ---
-
-<BaseLayout title={title}>
-  <h1>Projects</h1>
-  <div
-    class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-2 xl:p-5 mt-24"
-  >
-    {
-      allProjects.map((project) => (
-        <div class="mb-4">
-          <Project project={project} />
-        </div>
-      ))
-    }
-  </div>
-</BaseLayout>
+<Gallery title="Projects" description="Software, integrations and AI workflows built around operational needs." entries={entries}/>

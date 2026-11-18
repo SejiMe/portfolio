@@ -26,10 +26,6 @@ const projects = defineCollection({
         technologies: z.array(z.string()),
         project_link: z.string().optional(),
         project_github_link: z.string().optional(),
-      })
-      .refine((data) => data.date || data.year !== undefined, {
-        message: "Either date or year is required",
-        path: ["year"],
       }),
 });
 

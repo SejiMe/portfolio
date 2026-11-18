@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/BaseLayout.astro';
+import catalogue from '@iconify-json/devicon/icons.json';
+import {technologies} from '../data/technologies';
+function logo(key: string) {
+  const icon = (catalogue.icons as Record<string,{body:string,width?:number,height?:number}>)[key];
+  const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+(icon.width ?? catalogue.width)+' '+(icon.height ?? catalogue.height)+'">'+icon.body+'</svg>';
+  return 'data:image/svg+xml,'+encodeURIComponent(svg);
+}
+---
+<Base title="Technologies Used">
+  <main class="document-page technology-page">
+    <a class="back-link" href="/portfolio/#about">← Back to About</a>
+    <header class="document-heading"><h1>Technologies Used</h1></header>
+    {technologies.map(group => <section class="tool-group">
+      <h2>{group.title}</h2>
+      <div>
+        <ul class="tool-logos">{Object.entries(group.logos).map(([name,id]) =>
+          <li title={name}><img src={logo(id)} width="42" height="42" alt="" loading="lazy"/><span>{name}</span></li>
+        )}</ul>
+        <ul class="tool-skills">{group.skills.map(skill => <li>{skill}</li>)}</ul>
+      </div>
+    </section>)}
+    <a class="button" href="/portfolio/posts/how-i-work-with-ai/">Read how I work with AI ↗</a>
+  </main>
+</Base>
