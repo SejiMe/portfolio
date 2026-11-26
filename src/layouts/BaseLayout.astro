@@ -3,7 +3,8 @@ import regularFont from '@fontsource/roboto/files/roboto-latin-400-normal.woff2?
 import boldFont from '@fontsource/roboto/files/roboto-latin-700-normal.woff2?url';
 import '../styles/global.css';
 import { getCollection } from 'astro:content';
-import { chapters, resolveTheme } from '../utils/portfolio.mjs';
+import { chapters, resolveTheme, splashEligible } from '../utils/portfolio.mjs';
+import { beginEntrance } from '../scripts/entrance-bootstrap.mjs';
 const {title, home = false, career = false} = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 const entries = [...await getCollection('projects'), ...await getCollection('posts')];
@@ -22,7 +23,9 @@ const themeScript = `let stored;try{stored=localStorage.getItem('theme')}catch{}
 <link rel="icon" href={base+'sej-logo.ico'}/><link rel="alternate" type="application/rss+xml" title="Sej’s writing" href={base+'rss.xml'}/>
 <script is:inline set:html={themeScript}></script>
 </head><body>
+<slot name="overlay"/>
 <div id="site-shell">
+{home && <script is:inline set:html={`(${beginEntrance.toString()})(${splashEligible.toString()});`}></script>}
 <header class="mast">
 <a class="brand" href={base+'#intro'} aria-label="Sej — home"><img src={base+'sej-logo.svg'} width="64" height="48" alt=""/></a>
 <nav class="desktop-nav" aria-label={career ? 'Career sections' : 'Chapters'}>{chapterLinks.map(c=><a data-chapter={c.id} href={c.href}>{c.label}</a>)}</nav>
@@ -31,7 +34,7 @@ const themeScript = `let stored;try{stored=localStorage.getItem('theme')}catch{}
 </header>
 <slot/>
 <dialog id="search-box" aria-labelledby="search-title"><div class="spread"><h2 id="search-title">Search portfolio</h2><button id="close-search" aria-label="Close search">×</button></div><input id="query" type="search" autofocus placeholder="Search projects and writing" aria-label="Search projects and writing"/><div class="search-results"><ul>{entries.map(e=><li data-description={e.data.description}><a href={base+e.collection+'/'+e.slug+'/'}>{e.data.title.trim()}</a></li>)}</ul><p id="empty-search" hidden>No matches.</p></div></dialog>
-</div><slot name="overlay"/>
+</div>
 <script>
  import '../scripts/header.js';
  const theme = document.querySelector<HTMLButtonElement>('#theme')!;

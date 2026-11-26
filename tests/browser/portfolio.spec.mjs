@@ -1,4 +1,5 @@
 import {test,expect} from '@playwright/test';
+import {createServer} from 'node:http';
 
 const splash = page => page.locator('#entrance');
 async function usable(page) {
@@ -12,6 +13,79 @@ async function captured(page, info, name) {
   await page.screenshot({path:file,animations:'allow'});
   await info.attach(name,{path:file,contentType:'image/png'});
 }
+
+test('the splash is visible at first paint before the homepage module loads',async({page},info)=>{
+  test.skip(info.project.name!=='chromium','Uses the Chromium first-contentful-paint entry');
+  let release;
+  let intercepted=false;
+  const gate=new Promise(resolve=>{release=resolve;});
+  const entry=/\/_astro\/hoisted\.[^/]+\.js$/;
+  await page.route(entry,async route=>{intercepted=true;await gate;await route.continue().catch(()=>{});});
+  await page.goto('./',{waitUntil:'commit'});
+  try {
+    await expect.poll(()=>intercepted).toBe(true);
+    await expect.poll(()=>page.evaluate(()=>performance.getEntriesByName('first-contentful-paint').length)).toBe(1);
+    await expect(splash(page)).toBeVisible({timeout:1000});
+    expect(await page.evaluate(()=>document.elementFromPoint(innerWidth/2,innerHeight/2)?.closest('#entrance')?.id)).toBe('entrance');
+  } finally {release();}
+  await expect(splash(page)).toHaveAttribute('data-state','playing');
+  await usable(page);
+  await page.reload();
+  await usable(page);
+});
+
+test('the splash watchdog releases the homepage without its module',async({page})=>{
+  const epoch=new Date('2026-03-01T12:00:00Z');
+  await page.clock.install({time:epoch});
+  await page.clock.pauseAt(new Date(+epoch+1000));
+  await page.route(/\/_astro\/hoisted\.[^/]+\.js$/,route=>route.abort());
+  await page.goto('./',{waitUntil:'domcontentloaded'});
+  await expect(splash(page)).toBeVisible({timeout:1000});
+  await expect(page.locator('#site-shell')).toHaveJSProperty('inert',true);
+  await page.clock.runFor(3000);
+  await usable(page);
+});
+
+test('early splash dismissal restores focus after the homepage parses',async({page,baseURL})=>{
+  const site=new URL(baseURL);
+  const html=await (await fetch(site)).text();
+  const split=html.indexOf('<header class="mast"');
+  expect(split).toBeGreaterThan(0);
+  let resume;
+  const gate=new Promise(resolve=>{resume=resolve;});
+  const proxy=createServer(async (req,res)=>{
+    try {
+      if (req.url===site.pathname) {
+        res.writeHead(200,{'Content-Type':'text/html; charset=utf-8'});
+        res.write(html.slice(0,split));
+        await gate;
+        res.end(html.slice(split));
+      } else {
+        const target=new URL(req.url,site);
+        if (target.origin!==site.origin) {res.writeHead(404).end();return;}
+        const asset=await fetch(target,{redirect:'error'});
+        res.writeHead(asset.status,{'Content-Type':asset.headers.get('content-type')||'application/octet-stream'});
+        res.end(Buffer.from(await asset.arrayBuffer()));
+      }
+    } catch {res.destroy();}
+  });
+  await new Promise(resolve=>proxy.listen(0,'127.0.0.1',resolve));
+  try {
+    await page.goto(`http://127.0.0.1:${proxy.address().port}${new URL(baseURL).pathname}`,{waitUntil:'commit'});
+    await expect(page.getByRole('button',{name:'Skip intro'})).toBeFocused();
+    const heading=page.locator('#intro h1');
+    await expect(heading).toHaveCount(0);
+    await page.keyboard.press('Escape');
+    await expect(splash(page)).toBeHidden();
+    await expect(page.locator('#site-shell')).toHaveJSProperty('inert',false);
+    resume();
+    await expect(heading).toBeFocused();
+  } finally {
+    resume();
+    proxy.closeAllConnections();
+    await new Promise(resolve=>proxy.close(resolve));
+  }
+});
 
 test('emblem and lettering endpoints, dismissal, refresh and history',async({page},info)=>{
   const epoch=new Date('2026-03-01T12:00:00Z');
